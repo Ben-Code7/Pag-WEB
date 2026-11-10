@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Per - severa | Combatiendo el Rezago Educativo con Inteligencia Artificial</title>
+  <meta name="description" content="Proyecto Per-severa: Análisis estadístico del rezago educativo, oportunidades de la IA y guía de uso responsable para estudiantes y docentes.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef6ff',
+              100: '#d9ebff',
+              200: '#bcdbff',
+              300: '#8ec4ff',
+              400: '#58a0ff',
+              500: '#2f7bff',
+              600: '#1759f2',
+              700: '#1043df',
+              800: '#1337b5',
+              900: '#15328e',
+              950: '#101f56',
+            },
+            tealbrand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+            },
+            coral: {
+              500: '#f43f5e',
+              600: '#e11d48',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Outfit', sans-serif;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, #0d1b3e 0%, #17326e 50%, #1e4a9e 100%);
+    }
+    .hover-lift {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 30px -10px rgba(16, 67, 223, 0.15);
+    }
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #94a3b8;
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #64748b;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- ==================== BARRA DE AVISO SUPERIOR ==================== -->
+  <div class="bg-gradient-to-r from-brand-900 via-brand-700 to-tealbrand-700 text-white text-xs md:text-sm py-2 px-4 text-center font-medium shadow-inner flex items-center justify-center gap-2">
+    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-white/20 text-white animate-pulse">
+      <i class="fa-solid fa-chart-line mr-1"></i> Investigación 2026
+    </span>
+    <span>Proyecto académico comunitario <strong>"Per - severa"</strong>: Investigación sobre el Rezago Educativo e Inteligencia Artificial</span>
+    <a href="#estadisticas" class="underline ml-2 hover:text-brand-200 hidden sm:inline">Ver encuesta (88 participantes) &rarr;</a>
+  </div>
+
+  <!-- ==================== NAVEGACIÓN PRINCIPAL ==================== -->
+  <header class="sticky top-0 z-50 glass-card transition-all duration-300 border-b border-slate-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logotipo -->
+        <a href="#inicio" class="flex items-center gap-3 group">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-700 to-tealbrand-500 flex items-center justify-center text-white shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+            <i class="fa-solid fa-book-open-reader text-xl"></i>
+          </div>
+          <div>
+            <div class="text-2xl font-extrabold tracking-tight text-slate-900 flex items-center gap-1 font-heading">
+              Per <span class="text-brand-600">-</span> <span class="text-tealbrand-600">severa</span>
+            </div>
+            <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Superando el rezago educativo</p>
+          </div>
+        </a>
+
+        <!-- Enlaces Escritorio -->
+        <nav class="hidden lg:flex items-center space-x-1 font-medium text-sm text-slate-600">
+          <a href="#inicio" class="px-3 py-2 rounded-lg hover:text-brand-600 hover:bg-slate-100/80 transition">Inicio</a>
+          <a href="#proyecto" class="px-3 py-2 rounded-lg hover:text-brand-600 hover:bg-slate-100/80 transition">El Proyecto</a>
+          <a href="#rezago" class="px-3 py-2 rounded-lg hover:text-brand-600 hover:bg-slate-100/80 transition">Rezago Escolar</a>
+          <a href="#estadisticas" class="px-3 py-2 rounded-lg hover:text-brand-600 hover:bg-slate-100/80 transition text-brand-600 font-semibold flex items-center gap-1.5">
+            <i class="fa-solid fa-square-poll-vertical"></i> Estadísticas
+          </a>
+          <a href="#ia-educacion" class="px-3 py-2 rounded-lg hover:text-brand-600 hover:bg-slate-100/80 transition">IA Educativa</a>
+          <a href="#uso-responsable" class="px-3 py-2 rounded-lg hover:text-brand-600 hover:bg-slate-100/80 transition">Uso Responsable</a>
+          <a href="#autodiagnostico" class="px-3 py-2 rounded-lg hover:text-brand-600 hover:bg-slate-100/80 transition">Diagnóstico</a>
+        </nav>
+
+        <!-- Botón de Acción -->
+        <div class="hidden md:flex items-center gap-3">
+          <a href="#estadisticas" class="text-xs font-bold px-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-tealbrand-600 text-white shadow-md hover:shadow-brand-600/30 hover:brightness-105 transition flex items-center gap-2">
+            <i class="fa-solid fa-chart-pie"></i> Ver Estadísticas
+          </a>
+        </div>
+
+        <!-- Botón Menú Móvil -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-slate-600 hover:text-brand-600 hover:bg-slate-100 focus:outline-none" aria-label="Abrir menú">
+          <i class="fa-solid fa-bars text-2xl"></i>
+        </button>
+      </div>
+
+      <!-- Menú Desplegable Móvil -->
+      <div id="mobile-menu" class="hidden lg:hidden py-4 border-t border-slate-200/80 space-y-2">
+        <a href="#inicio" class="block px-4 py-2 rounded-lg text-slate-700 hover:bg-brand-50 hover:text-brand-600 font-medium">Inicio</a>
+        <a href="#proyecto" class="block px-4 py-2 rounded-lg text-slate-700 hover:bg-brand-50 hover:text-brand-600 font-medium">El Proyecto Per-severa</a>
+        <a href="#rezago" class="block px-4 py-2 rounded-lg text-slate-700 hover:bg-brand-50 hover:text-brand-600 font-medium">¿Qué es el Rezago?</a>
+        <a href="#estadisticas" class="block px-4 py-2 rounded-lg text-brand-600 bg-brand-50/60 font-semibold">Estadísticas de la Encuesta (88 datos)</a>
+        <a href="#ia-educacion" class="block px-4 py-2 rounded-lg text-slate-700 hover:bg-brand-50 hover:text-brand-600 font-medium">La IA en la Educación</a>
+        <a href="#uso-responsable" class="block px-4 py-2 rounded-lg text-slate-700 hover:bg-brand-50 hover:text-brand-600 font-medium">Uso Ético y Responsable</a>
+        <a href="#autodiagnostico" class="block px-4 py-2 rounded-lg text-slate-700 hover:bg-brand-50 hover:text-brand-600 font-medium">Herramienta de Diagnóstico</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== SECCIÓN HERO (INICIO) ==================== -->
+  <section id="inicio" class="relative overflow-hidden hero-gradient text-white pt-16 pb-24 lg:pt-24 lg:pb-32">
+    <!-- Adornos de fondo -->
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-tealbrand-500/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-brand-500/30 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Texto Principal -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-tealbrand-200 text-xs sm:text-sm font-semibold">
+            <i class="fa-solid fa-graduation-cap text-tealbrand-400"></i> Proyecto Educativo &middot; Puebla, México
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+            Per <span class="text-brand-300">-</span> <span class="text-tealbrand-300">severa</span>
+            <span class="block text-2xl sm:text-3xl lg:text-4xl font-light text-slate-200 mt-2">
+              Transformando el Rezago Educativo con Tecnología y Conciencia
+            </span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed mx-auto lg:mx-0">
+            Ningún estudiante debería quedarse atrás. <strong>Per - severa</strong> nace para visibilizar las causas del rezago escolar en nuestra comunidad y aprovechar las herramientas de <strong>Inteligencia Artificial</strong> como catalizadores de aprendizaje autodidacta, personalizado y ético.
+          </p>
+
+          <!-- Badges rápidos con datos de la encuesta -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 max-w-xl mx-auto lg:mx-0 text-left">
+            <div class="p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
+              <div class="text-2xl font-black text-tealbrand-300 font-heading">88</div>
+              <div class="text-xs text-slate-300">Estudiantes y ciudadanos encuestados</div>
+            </div>
+            <div class="p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
+              <div class="text-2xl font-black text-brand-300 font-heading">88.6%</div>
+              <div class="text-xs text-slate-300">Ya utilizan herramientas de IA</div>
+            </div>
+            <div class="p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 col-span-2 sm:col-span-1">
+              <div class="text-2xl font-black text-amber-300 font-heading">89.7%</div>
+              <div class="text-xs text-slate-300">Considera útil la IA para aprender</div>
+            </div>
+          </div>
+
+          <!-- Botones de Acción Hero -->
+          <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <a href="#estadisticas" class="px-7 py-3.5 rounded-xl font-bold bg-tealbrand-500 hover:bg-tealbrand-600 text-slate-950 transition-all shadow-lg shadow-tealbrand-500/25 flex items-center justify-center gap-2 text-sm sm:text-base">
+              <i class="fa-solid fa-chart-pie"></i> Explorar Estadísticas
+            </a>
+            <a href="#ia-educacion" class="px-7 py-3.5 rounded-xl font-bold bg-white/15 hover:bg-white/20 text-white backdrop-blur-md border border-white/25 transition flex items-center justify-center gap-2 text-sm sm:text-base">
+              <i class="fa-solid fa-robot"></i> La IA como Solución
+            </a>
+          </div>
+        </div>
+
+        <!-- Imagen Real y Tarjetas Flotantes -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            <!-- Marco de Imagen Real (Unsplash Educación) -->
+            <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 relative group">
+              <!-- Foto real verificada de estudiantes trabajando en equipo -->
+              <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80" 
+                    alt="Estudiantes colaborando en biblioteca con computadora y libros" 
+                    class="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              
+              <div class="absolute bottom-4 left-4 right-4 text-white p-3 rounded-xl bg-slate-900/60 backdrop-blur-md border border-white/10 text-xs">
+                <i class="fa-solid fa-camera mr-1 text-tealbrand-400"></i> Fotografía documental de estudio y colaboración académica
+              </div>
+            </div>
+
+            <!-- Tarjeta Flotante 1: Oportunidad de la IA -->
+            <div class="absolute -top-6 -left-6 bg-white text-slate-800 p-4 rounded-2xl shadow-xl border border-slate-100 hidden sm:flex items-center gap-3 animate-bounce [animation-duration:4s]">
+              <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-lg">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-slate-900">Aprender a tu propio ritmo</p>
+                <p class="text-[11px] text-slate-500">60.2% de los encuestados lo prioriza</p>
+              </div>
+            </div>
+
+            <!-- Tarjeta Flotante 2: Celular como herramienta principal -->
+            <div class="absolute -bottom-6 -right-6 bg-white text-slate-800 p-4 rounded-2xl shadow-xl border border-slate-100 hidden sm:flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-tealbrand-100 text-tealbrand-600 flex items-center justify-center font-bold text-lg">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-slate-900">95.5% estudia desde el celular</p>
+                <p class="text-[11px] text-slate-500">Educación móvil y accesible</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECCIÓN: ACERCA DE NUESTRO PROYECTO ==================== -->
+  <section id="proyecto" class="py-20 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full border border-brand-200">
+          Nuestra Identidad y Propósito
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-heading">
+          Acerca del Proyecto <span class="text-brand-600">Per - severa</span>
+        </h2>
+        <p class="text-slate-600 mt-4 text-base sm:text-lg">
+          ¿Por qué nos llamamos así? La perseverancia es la fuerza de continuar ante cualquier obstáculo. En la educación, rendirse no es una opción cuando contamos con voluntad, empatía y tecnología.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Foto real de equipo / salón de clases -->
+        <div class="lg:col-span-5 order-2 lg:order-1">
+          <div class="relative">
+            <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200">
+              <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1000&q=80" 
+                    alt="Docente orientando y apoyando a estudiantes en el aula" 
+                    class="w-full h-[420px] object-cover">
+            </div>
+            <!-- Cita inspiradora -->
+            <div class="absolute -bottom-6 left-6 right-6 p-4 rounded-2xl bg-brand-900 text-white shadow-lg text-xs sm:text-sm">
+              <p class="italic">"La educación no cambia el mundo, cambia a las personas que van a cambiar el mundo."</p>
+              <p class="font-bold text-tealbrand-300 mt-1 text-right">— Paulo Freire</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Misión, Visión y Pilares -->
+        <div class="lg:col-span-7 order-1 lg:order-2 space-y-6">
+          <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover-lift">
+            <div class="flex items-center gap-4 mb-2">
+              <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold">
+                <i class="fa-solid fa-bullseye"></i>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 font-heading">Nuestra Misión</h3>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Investigar con rigor estadístico y humano las causas reales del rezago escolar en el estado de Puebla y en el entorno mexicano, proponiendo guías y estrategias basadas en Inteligencia Artificial que permitan a los jóvenes autodidactas retomar y nivelar sus estudios sin costo y a su propio ritmo.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover-lift">
+            <div class="flex items-center gap-4 mb-2">
+              <div class="w-10 h-10 rounded-xl bg-tealbrand-600 text-white flex items-center justify-center font-bold">
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 font-heading">Nuestra Visión</h3>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Convertirnos en una plataforma referente de divulgación educativa y alfabetización en IA, donde cualquier estudiante con dudas o con desfase académico encuentre orientación clara, herramientas verificadas y un espacio de comunidad solidario.
+            </p>
+          </div>
+
+          <!-- Valores Clave -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div class="text-center p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+              <i class="fa-solid fa-heart-pulse text-2xl text-coral-500 mb-2"></i>
+              <h4 class="font-bold text-sm text-slate-900">Empatía Real</h4>
+              <p class="text-xs text-slate-500 mt-1">Entender que cada estudiante vive retos familiares y económicos distintos.</p>
+            </div>
+            <div class="text-center p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+              <i class="fa-solid fa-scale-balanced text-2xl text-brand-600 mb-2"></i>
+              <h4 class="font-bold text-sm text-slate-900">Uso Ético</h4>
+              <p class="text-xs text-slate-500 mt-1">La IA es un tutor complementario, nunca un atajo para el plagio.</p>
+            </div>
+            <div class="text-center p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+              <i class="fa-solid fa-universal-access text-2xl text-tealbrand-600 mb-2"></i>
+              <h4 class="font-bold text-sm text-slate-900">Inclusión Digital</h4>
+              <p class="text-xs text-slate-500 mt-1">Priorizar herramientas que funcionen bien en cualquier celular modesto.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SECCIÓN: ¿QUÉ ES EL REZAGO EDUCATIVO? ==================== -->
+  <section id="rezago" class="py-20 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-coral-600 bg-rose-50 px-3 py-1 rounded-full border border-rose-200">
+          La Problemática Nacional y Local
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-heading">
+          Comprendiendo el Rezago Educativo
+        </h2>
+        <p class="text-slate-600 mt-4 text-base sm:text-lg">
+          El rezago educativo no es simplemente "dejar la escuela"; es un fenómeno multidimensional que afecta el proyecto de vida, la autoestima y las oportunidades laborales de millones de jóvenes.
+        </p>
+      </div>
+
+      <!-- Tarjetas de Causas Detectadas en la Encuesta Real -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover-lift">
+          <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl mb-4">
+            <i class="fa-solid fa-person-breastfeeding"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2 font-heading">Responsabilidades Familiares</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            El <strong>10.2%</strong> de las personas fuera del sistema escolar en nuestra muestra citan labores de cuidado de hermanos, hijos o familiares enfermos como la causa primordial.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover-lift">
+          <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-xl mb-4">
+            <i class="fa-solid fa-briefcase"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2 font-heading">Necesidad de Trabajar</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            La urgencia de generar ingresos para el sustento del hogar obliga a adolescentes y jóvenes a desertar o pausar su formación de nivel medio superior y universitario.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover-lift">
+          <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center text-xl mb-4">
+            <i class="fa-solid fa-notes-medical"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2 font-heading">Salud y Discapacidad</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Representó el <strong>8.0%</strong> de los casos. La falta de escuelas adaptadas y el seguimiento a tratamientos médicos prolongados aíslan a los estudiantes.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover-lift">
+          <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-xl mb-4">
+            <i class="fa-solid fa-bus"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2 font-heading">Distancia y Transporte</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            En comunidades periurbanas y rurales de Puebla y México, el costo diario de los pasajes o la falta de transporte seguro genera inasistencias acumulativas y abandono.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Banner de Reflexión con Foto Real -->
+      <div class="rounded-3xl overflow-hidden bg-gradient-to-r from-slate-900 via-brand-950 to-slate-900 text-white shadow-xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
+          <div class="lg:col-span-8 p-8 sm:p-12 space-y-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-tealbrand-400">
+              <i class="fa-solid fa-lightbulb mr-1"></i> Punto Crítico
+            </span>
+            <h3 class="text-2xl sm:text-3xl font-bold font-heading">
+              "El rezago no es una falta de capacidad: es una falta de sincronía y oportunidades."
+            </h3>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Muchos jóvenes no aprenden no porque el tema sea imposible, sino porque el ritmo del aula tradicional no se ajusta a sus horarios de vida o porque un maestro no tuvo el tiempo de explicarles de una forma alternativa. Aquí es donde la <strong>Inteligencia Artificial bien guiada</strong> marca un antes y un después.
+            </p>
+            <div class="pt-2">
+              <a href="#estadisticas" class="inline-flex items-center gap-2 text-sm font-bold text-tealbrand-300 hover:text-tealbrand-200 underline">
+                Conocer qué opinan los 88 encuestados sobre esta realidad &rarr;
+              </a>
+            </div>
+          </div>
+          <div class="lg:col-span-4 h-64 lg:h-full min-h-[250px]">
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80" 
+                  alt="Estudiante concentrado estudiando con notas y libros" 
+                  class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SECCIÓN: ESTADÍSTICAS (DATOS REALES DEL CSV) ==================== -->
+  <section id="estadisticas" class="py-20 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs font-bold uppercase tracking-wider">
+          <i class="fa-solid fa-database"></i> Resultados Reales de Campo
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-heading">
+          Estadísticas de la Encuesta Per - severa
+        </h2>
+        <p class="text-slate-600 mt-4 text-base sm:text-lg">
+          Analizamos las respuestas de <strong>88 personas</strong> (principalmente estudiantes del estado de Puebla) sobre su situación académica, acceso tecnológico, uso cotidiano de la Inteligencia Artificial y expectativas de apoyo.
+        </p>
+      </div>
+
+      <!-- Métricas Resumen (KPI Cards) -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-12">
+        
+        <div class="p-6 rounded-2xl bg-gradient-to-br from-brand-50 to-white border border-brand-200 shadow-sm text-center">
+          <div class="text-xs font-bold uppercase text-brand-700 tracking-wider mb-1">Muestra Total</div>
+          <div class="text-4xl sm:text-5xl font-black text-brand-900 font-heading">88</div>
+          <p class="text-xs text-slate-500 mt-2">Participantes (87.5% de Puebla)</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-gradient-to-br from-teal-50 to-white border border-teal-200 shadow-sm text-center">
+          <div class="text-xs font-bold uppercase text-tealbrand-700 tracking-wider mb-1">Han usado IA</div>
+          <div class="text-4xl sm:text-5xl font-black text-tealbrand-600 font-heading">88.6%</div>
+          <p class="text-xs text-slate-500 mt-2">78 de 88 personas ya interactúan con IA</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-gradient-to-br from-indigo-50 to-white border border-indigo-200 shadow-sm text-center">
+          <div class="text-xs font-bold uppercase text-indigo-700 tracking-wider mb-1">Dispositivo Clave</div>
+          <div class="text-4xl sm:text-5xl font-black text-indigo-700 font-heading">95.5%</div>
+          <p class="text-xs text-slate-500 mt-2">Utilizan el celular para estudiar</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-gradient-to-br from-amber-50 to-white border border-amber-200 shadow-sm text-center">
+          <div class="text-xs font-bold uppercase text-amber-700 tracking-wider mb-1">Percepción Positiva</div>
+          <div class="text-4xl sm:text-5xl font-black text-amber-600 font-heading">89.7%</div>
+          <p class="text-xs text-slate-500 mt-2">La considera útil para su aprendizaje</p>
+        </div>
+
+      </div>
+
+      <!-- Selector de Pestañas Interactivas para las Gráficas -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-8" id="chart-tabs">
+        <button onclick="switchChartTab('adopcion')" id="tab-adopcion" class="chart-tab-btn active px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition bg-brand-600 text-white shadow-sm flex items-center gap-2">
+          <i class="fa-solid fa-chart-pie"></i> 1. Adopción y Frecuencia de IA
+        </button>
+        <button onclick="switchChartTab('usos')" id="tab-usos" class="chart-tab-btn px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center gap-2">
+          <i class="fa-solid fa-chart-bar"></i> 2. ¿Para qué usan la IA?
+        </button>
+        <button onclick="switchChartTab('ayuda')" id="tab-ayuda" class="chart-tab-btn px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center gap-2">
+          <i class="fa-solid fa-hands-holding-child"></i> 3. ¿En qué aspectos ayuda más?
+        </button>
+        <button onclick="switchChartTab('riesgos')" id="tab-riesgos" class="chart-tab-btn px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center gap-2">
+          <i class="fa-solid fa-triangle-exclamation"></i> 4. Riesgos y Preocupaciones
+        </button>
+        <button onclick="switchChartTab('apoyos')" id="tab-apoyos" class="chart-tab-btn px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center gap-2">
+          <i class="fa-solid fa-wifi"></i> 5. Apoyos Necesarios
+        </button>
+      </div>
+
+      <!-- Contenedores de Gráficos Interactivos -->
+      <div class="bg-slate-50 p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-inner">
+        
+        <!-- Panel 1: Adopción y Frecuencia -->
+        <div id="panel-adopcion" class="chart-panel block">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+              <h4 class="font-bold text-slate-800 text-base mb-4 flex items-center justify-between">
+                <span><i class="fa-solid fa-clock text-brand-600 mr-2"></i>Frecuencia de Uso de la IA</span>
+                <span class="text-xs text-slate-400 font-normal">88 respuestas</span>
+              </h4>
+              <div class="relative h-72 sm:h-80 w-full">
+                <canvas id="chartFrecuencia"></canvas>
+              </div>
+            </div>
+            <div class="lg:col-span-5 space-y-4">
+              <h3 class="text-xl font-extrabold text-slate-900 font-heading">
+                La IA ya es parte del día a día estudiantil
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                El <strong>88.6%</strong> de los encuestados afirma haber utilizado herramientas como ChatGPT, Gemini o Copilot. De ellos:
+              </p>
+              <ul class="space-y-2 text-sm text-slate-700">
+                <li class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-brand-500"></span>
+                  <span><strong>44.3%</strong> la utiliza varias veces por semana.</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-tealbrand-500"></span>
+                  <span><strong>22.7%</strong> la utiliza una vez por semana.</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                  <span><strong>10.2%</strong> la consulta todos los días.</span>
+                </li>
+              </ul>
+              <div class="p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs">
+                <i class="fa-solid fa-triangle-exclamation mr-1 text-amber-600"></i>
+                <strong>Dato de alerta:</strong> El <strong>44.3% jamás ha recibido capacitación</strong> formal sobre cómo usarla éticamente.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Usos de la IA -->
+        <div id="panel-usos" class="chart-panel hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+              <h4 class="font-bold text-slate-800 text-base mb-4 flex items-center justify-between">
+                <span><i class="fa-solid fa-list-check text-tealbrand-600 mr-2"></i>Principales Usos Académicos de la IA</span>
+                <span class="text-xs text-slate-400 font-normal">Opción múltiple</span>
+              </h4>
+              <div class="relative h-72 sm:h-80 w-full">
+                <canvas id="chartUsos"></canvas>
+              </div>
+            </div>
+            <div class="lg:col-span-5 space-y-4">
+              <h3 class="text-xl font-extrabold text-slate-900 font-heading">
+                ¿En qué tareas recurren a la IA?
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Los alumnos utilizan la inteligencia artificial principalmente como un consultor instantáneo para superar bloqueos de estudio:
+              </p>
+              <div class="space-y-2 text-xs sm:text-sm">
+                <div class="p-3 rounded-lg bg-white border border-slate-200 flex justify-between items-center">
+                  <span class="font-medium text-slate-700"><i class="fa-regular fa-circle-question text-brand-600 mr-2"></i>Resolver dudas escolares</span>
+                  <span class="font-bold text-brand-700 bg-brand-50 px-2 py-0.5 rounded">68.2% (60)</span>
+                </div>
+                <div class="p-3 rounded-lg bg-white border border-slate-200 flex justify-between items-center">
+                  <span class="font-medium text-slate-700"><i class="fa-solid fa-magnifying-glass text-tealbrand-600 mr-2"></i>Buscar información</span>
+                  <span class="font-bold text-tealbrand-700 bg-tealbrand-50 px-2 py-0.5 rounded">62.5% (55)</span>
+                </div>
+                <div class="p-3 rounded-lg bg-white border border-slate-200 flex justify-between items-center">
+                  <span class="font-medium text-slate-700"><i class="fa-solid fa-chalkboard-user text-indigo-600 mr-2"></i>Explicar temas difíciles</span>
+                  <span class="font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">39.8% (35)</span>
+                </div>
+                <div class="p-3 rounded-lg bg-white border border-slate-200 flex justify-between items-center">
+                  <span class="font-medium text-slate-700"><i class="fa-solid fa-file-lines text-amber-600 mr-2"></i>Hacer tareas o trabajos</span>
+                  <span class="font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded">34.1% (30)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3: Aspectos de Ayuda -->
+        <div id="panel-ayuda" class="chart-panel hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+              <h4 class="font-bold text-slate-800 text-base mb-4 flex items-center justify-between">
+                <span><i class="fa-solid fa-heart-circle-check text-brand-600 mr-2"></i>¿Cómo puede la IA rescatar el aprendizaje?</span>
+                <span class="text-xs text-slate-400 font-normal">Hasta 3 opciones</span>
+              </h4>
+              <div class="relative h-72 sm:h-80 w-full">
+                <canvas id="chartAyuda"></canvas>
+              </div>
+            </div>
+            <div class="lg:col-span-5 space-y-4">
+              <h3 class="text-xl font-extrabold text-slate-900 font-heading">
+                La clave contra el rezago: Claridad y Flexibilidad
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Cuando los estudiantes se retrasan, lo que más necesitan no son más tareas, sino explicaciones más accesibles y tiempo sin presiones:
+              </p>
+              <div class="space-y-3">
+                <div class="p-3 rounded-xl bg-tealbrand-50 border border-tealbrand-200 text-xs text-tealbrand-900">
+                  <strong>63.6% pide explicaciones más sencillas:</strong> El lenguaje formal o técnico de los libros a veces genera barreras de comprensión.
+                </div>
+                <div class="p-3 rounded-xl bg-brand-50 border border-brand-200 text-xs text-brand-900">
+                  <strong>60.2% busca aprender a su propio ritmo:</strong> Repetir un tema 5 veces sin temor a ser juzgado en el salón.
+                </div>
+                <div class="p-3 rounded-xl bg-indigo-50 border border-indigo-200 text-xs text-indigo-900">
+                  <strong>59.1% necesita resolver dudas fuera de clases:</strong> Especialmente relevante para quienes trabajan o cuidan a su familia durante el día.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 4: Riesgos y Preocupaciones -->
+        <div id="panel-riesgos" class="chart-panel hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+              <h4 class="font-bold text-slate-800 text-base mb-4 flex items-center justify-between">
+                <span><i class="fa-solid fa-shield-halved text-coral-600 mr-2"></i>Preocupaciones Reales de los Usuarios</span>
+                <span class="text-xs text-slate-400 font-normal">88 respuestas</span>
+              </h4>
+              <div class="relative h-72 sm:h-80 w-full">
+                <canvas id="chartRiesgos"></canvas>
+              </div>
+            </div>
+            <div class="lg:col-span-5 space-y-4">
+              <h3 class="text-xl font-extrabold text-slate-900 font-heading">
+                Conciencia crítica de los encuestados
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Lejos de confiar ciegamente en la tecnología, los estudiantes y ciudadanos identifican riesgos muy claros que justifican nuestro proyecto:
+              </p>
+              <ul class="space-y-2 text-xs sm:text-sm text-slate-700">
+                <li class="p-2.5 rounded-lg bg-rose-50 border border-rose-200 flex items-center justify-between">
+                  <span><i class="fa-solid fa-circle-exclamation text-rose-600 mr-2"></i>Información falsa o inexacta</span>
+                  <strong class="text-rose-700">65.9%</strong>
+                </li>
+                <li class="p-2.5 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-between">
+                  <span><i class="fa-solid fa-link-slash text-amber-600 mr-2"></i>Depender demasiado de la tecnología</span>
+                  <strong class="text-amber-700">59.1%</strong>
+                </li>
+                <li class="p-2.5 rounded-lg bg-purple-50 border border-purple-200 flex items-center justify-between">
+                  <span><i class="fa-solid fa-user-lock text-purple-600 mr-2"></i>Afectación a la privacidad de datos</span>
+                  <strong class="text-purple-700">50.0%</strong>
+                </li>
+                <li class="p-2.5 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-between">
+                  <span><i class="fa-solid fa-copy text-slate-600 mr-2"></i>Copiar sin aprender realmente</span>
+                  <strong class="text-slate-700">44.3%</strong>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 5: Apoyos Necesarios -->
+        <div id="panel-apoyos" class="chart-panel hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+              <h4 class="font-bold text-slate-800 text-base mb-4 flex items-center justify-between">
+                <span><i class="fa-solid fa-hand-holding-heart text-tealbrand-600 mr-2"></i>¿Qué apoyo solicitan para usar la IA?</span>
+                <span class="text-xs text-slate-400 font-normal">88 respuestas</span>
+              </h4>
+              <div class="relative h-72 sm:h-80 w-full">
+                <canvas id="chartApoyos"></canvas>
+              </div>
+            </div>
+            <div class="lg:col-span-5 space-y-4">
+              <h3 class="text-xl font-extrabold text-slate-900 font-heading">
+                ¿Qué necesita nuestra comunidad?
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Tener la herramienta no basta si falta la conectividad y la guía pedagógica. La encuesta revela las necesidades prioritarias:
+              </p>
+              <div class="space-y-2 text-xs sm:text-sm">
+                <div class="p-3 rounded-lg bg-white border border-slate-200 flex justify-between items-center">
+                  <span><i class="fa-solid fa-wifi text-brand-600 mr-2"></i>Acceso estable a Internet</span>
+                  <strong class="text-slate-900">27.3% (24)</strong>
+                </div>
+                <div class="p-3 rounded-lg bg-white border border-slate-200 flex justify-between items-center">
+                  <span><i class="fa-solid fa-graduation-cap text-tealbrand-600 mr-2"></i>Capacitación para usarla</span>
+                  <strong class="text-slate-900">26.1% (23)</strong>
+                </div>
+                <div class="p-3 rounded-lg bg-white border border-slate-200 flex justify-between items-center">
+                  <span><i class="fa-solid fa-laptop text-indigo-600 mr-2"></i>Dispositivos adecuados</span>
+                  <strong class="text-slate-900">14.8% (13)</strong>
+                </div>
+                <div class="p-3 rounded-lg bg-white border border-slate-200 flex justify-between items-center">
+                  <span><i class="fa-solid fa-person-chalkboard text-amber-600 mr-2"></i>Orientación de un docente</span>
+                  <strong class="text-slate-900">11.4% (10)</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SECCIÓN: LA IA EN LA EDUCACIÓN ==================== -->
+  <section id="ia-educacion" class="py-20 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-tealbrand-600 bg-tealbrand-50 px-3 py-1 rounded-full border border-tealbrand-200">
+          Tecnología con Sentido Humano
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-heading">
+          La IA como Herramienta para Combatir el Rezago
+        </h2>
+        <p class="text-slate-600 mt-4 text-base sm:text-lg">
+          La Inteligencia Artificial no viene a reemplazar a los profesores ni a las aulas, sino a convertirse en un <strong>tutor paciente y personalizado</strong> que está disponible en la palma de tu mano cuando más lo necesitas.
+        </p>
+      </div>
+
+      <!-- Cuadrícula de Características y Usos -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        
+        <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover-lift">
+          <div class="w-14 h-14 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center text-2xl mb-6">
+            <i class="fa-solid fa-person-chalkboard"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3 font-heading">Tutoría Personalizada 24/7</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Puedes pedirle a la IA que te explique un tema de matemáticas como si tuvieras 10 años, con metáforas de fútbol o paso por paso, tantas veces como sea necesario y sin sentir vergüenza.
+          </p>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover-lift">
+          <div class="w-14 h-14 rounded-2xl bg-tealbrand-100 text-tealbrand-600 flex items-center justify-center text-2xl mb-6">
+            <i class="fa-solid fa-stopwatch"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3 font-heading">Flexibilidad Total de Horario</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Para los jóvenes que trabajan o cuidan familiares, estudiar a las 11:00 de la noche o en trayectos de transporte es su única opción. La IA no tiene horarios de oficina y responde al instante.
+          </p>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover-lift">
+          <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-2xl mb-6">
+            <i class="fa-solid fa-language"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3 font-heading">Nivelación en Lectura y Ciencias</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Ayuda a redactar resúmenes, traducir textos en otros idiomas, desglosar ecuaciones paso a paso y generar cuestionarios de autoevaluación para medir el avance real del alumno.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Catálogo de Herramientas Reales de IA Educativa -->
+      <div class="mb-16">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h3 class="text-2xl font-bold text-slate-900 font-heading">Herramientas Recomendadas para Estudiar</h3>
+            <p class="text-xs sm:text-sm text-slate-500">Plataformas reales, gratuitas o accesibles que puedes empezar a utilizar hoy.</p>
+          </div>
+          <span class="hidden sm:inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-200 text-slate-700">
+            <i class="fa-solid fa-circle-check text-tealbrand-600 mr-1.5"></i> Verificadas
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Khan Academy / Khanmigo -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 hover-lift flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-100 text-emerald-800">100% Gratuito</span>
+                <i class="fa-solid fa-shapes text-emerald-600 text-xl"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 mb-2 font-heading">Khan Academy (Khanmigo)</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Plataforma pedagógica líder mundial. Su asistente de IA guía al estudiante socráticamente: en lugar de darle la respuesta, le hace preguntas guía para que razone por sí mismo.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-600">
+              <span>Ideal para: Matemáticas y Ciencias</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </div>
+          </div>
+
+          <!-- Google Gemini / NotebookLM -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 hover-lift flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-blue-100 text-blue-800">Gratuito</span>
+                <i class="fa-brands fa-google text-blue-600 text-xl"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 mb-2 font-heading">NotebookLM &amp; Google Gemini</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Permite subir tus propios archivos PDF o apuntes de clase y hacerle preguntas exclusivas sobre esos documentos, evitando información falsa y creando guías de estudio automáticas.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-600">
+              <span>Ideal para: Historia, Lectura y Notas</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </div>
+          </div>
+
+          <!-- Photomath -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 hover-lift flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-rose-100 text-rose-800">Versión Móvil</span>
+                <i class="fa-solid fa-calculator text-rose-600 text-xl"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 mb-2 font-heading">Photomath</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Escanea problemas matemáticos con la cámara del celular (dispositivo que tiene el 95.5% de encuestados) y muestra el procedimiento algebraico paso a paso con explicaciones didácticas.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-600">
+              <span>Ideal para: Álgebra y Geometría</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </div>
+          </div>
+
+          <!-- Perplexity AI -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 hover-lift flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-indigo-100 text-indigo-800">Con Fuentes Reales</span>
+                <i class="fa-solid fa-globe text-indigo-600 text-xl"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 mb-2 font-heading">Perplexity AI</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Buscador con IA que cita directamente las páginas web, libros y artículos académicos donde encontró la información, combatiendo la desinformación escolar.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-600">
+              <span>Ideal para: Trabajos de Investigación</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </div>
+          </div>
+
+          <!-- DeepL & QuillBot -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 hover-lift flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-100 text-amber-800">Escritura y Lenguaje</span>
+                <i class="fa-solid fa-pen-nib text-amber-600 text-xl"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 mb-2 font-heading">DeepL &amp; QuillBot</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Herramientas de traducción de alta precisión y asistencia de redacción para enriquecer vocabulario, estructurar ensayos y mejorar la coherencia gramatical.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-600">
+              <span>Ideal para: Lengua y Expresión Escrita</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </div>
+          </div>
+
+          <!-- ChatGPT / Copilot -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 hover-lift flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-200 text-slate-800">Asistente General</span>
+                <i class="fa-solid fa-brain text-slate-700 text-xl"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 mb-2 font-heading">ChatGPT &amp; Copilot</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Modelos versátiles para generar planes de estudio semanales, simular exámenes tipo admisión o pedirle que actúe como un compañero de debate para practicar temas.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-600">
+              <span>Ideal para: Organización de Estudio</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Tabla Comparativa: Ventajas vs Desventajas -->
+      <div class="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-sm">
+        <h3 class="text-2xl font-bold text-slate-900 mb-6 text-center font-heading">
+          Balanza Crítica: Ventajas y Desventajas de la IA en el Aprendizaje
+        </h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Ventajas -->
+          <div class="p-6 rounded-2xl bg-emerald-50/70 border border-emerald-200">
+            <h4 class="text-lg font-bold text-emerald-900 mb-4 flex items-center gap-2 font-heading">
+              <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i> Ventajas Significativas
+            </h4>
+            <ul class="space-y-3 text-sm text-emerald-950">
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                <span><strong>Paciencia infinita:</strong> Responde dudas repetitivas sin impacientarse ni regañar al alumno con rezago.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                <span><strong>Democratización del conocimiento:</strong> Lleva explicaciones de calidad a estudiantes sin dinero para profesores particulares.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                <span><strong>Adaptabilidad pedagógica:</strong> Traduce conceptos abstractos a ejemplos cotidianos y familiares.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                <span><strong>Acompañamiento autónomo:</strong> Fomenta la autodisciplina y la iniciativa propia en el estudio.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Desventajas / Riesgos -->
+          <div class="p-6 rounded-2xl bg-rose-50/70 border border-rose-200">
+            <h4 class="text-lg font-bold text-rose-900 mb-4 flex items-center gap-2 font-heading">
+              <i class="fa-solid fa-circle-xmark text-rose-600 text-xl"></i> Desventajas y Riesgos Reales
+            </h4>
+            <ul class="space-y-3 text-sm text-rose-950">
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-xmark text-rose-600 mt-1"></i>
+                <span><strong>Alucinaciones e información falsa:</strong> La IA puede inventar datos, fuentes y fechas con tono convincente (preocupación del 65.9%).</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-xmark text-rose-600 mt-1"></i>
+                <span><strong>Atrofia del pensamiento crítico:</strong> Copiar y pegar respuestas automáticas impide que el cerebro desarrolle habilidades reales (44.3%).</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-xmark text-rose-600 mt-1"></i>
+                <span><strong>Dependencia tecnológica:</strong> Sensación de no poder redactar o calcular nada sin abrir la app (59.1%).</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-xmark text-rose-600 mt-1"></i>
+                <span><strong>Privacidad en riesgo:</strong> Muchas plataformas entrenan sus modelos con datos personales y tareas confidenciales (50%).</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SECCIÓN: USO RESPONSABLE DE LA IA ==================== -->
+  <section id="uso-responsable" class="py-20 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full border border-brand-200">
+          Ética, Integridad y Seguridad
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-heading">
+          El Decálogo del Uso Responsable
+        </h2>
+        <p class="text-slate-600 mt-4 text-base sm:text-lg">
+          Para que la Inteligencia Artificial sea un verdadero puente contra el rezago y no una trampa, debemos guiarnos por 5 principios inquebrantables.
+        </p>
+      </div>
+
+      <!-- 5 Principios del Estudiante Ético -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        
+        <!-- Principio 1 -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover-lift">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-8 h-8 rounded-full bg-brand-600 text-white font-bold flex items-center justify-center text-sm">1</span>
+            <h3 class="font-bold text-slate-900 font-heading">Verifica siempre las fuentes</h3>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Nunca tomes una respuesta de IA como verdad absoluta. Si te da una cifra histórica o una fórmula, confirma en tus libros de texto o sitios web de instituciones educativas reconocidas.
+          </p>
+        </div>
+
+        <!-- Principio 2 -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover-lift">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-8 h-8 rounded-full bg-tealbrand-600 text-white font-bold flex items-center justify-center text-sm">2</span>
+            <h3 class="font-bold text-slate-900 font-heading">Aprende el "Cómo", no solo el "Qué"</h3>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            No le pidas: <em>"Hazme este problema"</em>. Pídele: <em>"Explícame los pasos para resolverlo y dame un ejercicio similar para intentarlo yo mismo"</em>. El examen lo presentarás tú, no la IA.
+          </p>
+        </div>
+
+        <!-- Principio 3 -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover-lift">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-8 h-8 rounded-full bg-purple-600 text-white font-bold flex items-center justify-center text-sm">3</span>
+            <h3 class="font-bold text-slate-900 font-heading">Transparencia y Cero Plagio</h3>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Si utilizas la IA como apoyo para redactar un borrador o generar ideas, sé honesto con tus maestros y menciónalo. El plagio destruye la confianza y te priva del aprendizaje.
+          </p>
+        </div>
+
+        <!-- Principio 4 -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover-lift">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-8 h-8 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-sm">4</span>
+            <h3 class="font-bold text-slate-900 font-heading">Protege tu Privacidad</h3>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Jamás ingreses nombres completos, contraseñas, direcciones, números telefónicos ni fotografías privadas en prompts o chats de IA. Tus datos pueden ser almacenados en servidores externos.
+          </p>
+        </div>
+
+        <!-- Principio 5 -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover-lift">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-8 h-8 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-sm">5</span>
+            <h3 class="font-bold text-slate-900 font-heading">Conserva el Vínculo Humano</h3>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            La IA no sustituye el consejo de un maestro empático, el debate con tus compañeros de clase ni la sabiduría de la experiencia humana. Úsala para enriquecer tus conversaciones, no para aislarte.
+          </p>
+        </div>
+
+        <!-- Tarjeta especial: Para docentes -->
+        <div class="p-6 rounded-2xl bg-brand-50 border border-brand-200 hover-lift">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-8 h-8 rounded-full bg-brand-800 text-white font-bold flex items-center justify-center text-sm"><i class="fa-solid fa-chalkboard-user"></i></span>
+            <h3 class="font-bold text-brand-900 font-heading">Mensaje para Docentes</h3>
+          </div>
+          <p class="text-xs text-brand-800 leading-relaxed">
+            No prohibamos la IA: enseñemos a cuestionarla. Guiar a un alumno con rezago para que use un prompt efectivo es darle una herramienta para toda la vida profesional.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Imagen Real de Estudiantes debatiendo -->
+      <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 grid grid-cols-1 lg:grid-cols-12 bg-slate-900 text-white">
+        <div class="lg:col-span-5 h-64 lg:h-auto">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80" 
+               alt="Grupo de estudiantes universitarios colaborando con laptops y debatiendo ideas" 
+               class="w-full h-full object-cover">
+        </div>
+        <div class="lg:col-span-7 p-8 sm:p-10 space-y-4 flex flex-col justify-center">
+          <span class="text-xs font-bold uppercase tracking-wider text-tealbrand-400">
+            <i class="fa-solid fa-compass mr-1"></i> Nuestro Compromiso Ético
+          </span>
+          <h3 class="text-2xl sm:text-3xl font-bold font-heading">
+            "Tecnología sin ética es solo desinformación veloz. Conciencia más perseverancia es verdadera educación."
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            En el proyecto <strong>Per - severa</strong> creemos firmemente que la alfabetización digital e inteligencia artificial debe llegar a todas las comunidades de Puebla y México de forma responsable, libre y equitativa.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SECCIÓN INTERACTIVA: AUTODIAGNÓSTICO ==================== -->
+  <section id="autodiagnostico" class="py-20 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-tealbrand-600 bg-tealbrand-50 px-3 py-1 rounded-full border border-tealbrand-200">
+          Herramienta Interactiva
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-heading">
+          Autodiagnóstico: ¿Cuál es tu mayor obstáculo educativo?
+        </h2>
+        <p class="text-slate-600 mt-3 text-sm sm:text-base">
+          Selecciona tu situación actual para recibir una recomendación inmediata de herramientas y estrategias con IA recomendadas por Per - severa.
+        </p>
+      </div>
+
+      <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-md">
+        
+        <label class="block text-sm font-bold text-slate-800 mb-3">
+          ¿Con cuál de estos desafíos te identificas más hoy?
+        </label>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+          <button type="button" onclick="selectDiagnostic('dificiles')" class="diag-btn p-4 rounded-xl border border-slate-200 text-left hover:border-brand-500 hover:bg-brand-50/50 transition flex items-start gap-3">
+            <i class="fa-solid fa-puzzle-piece text-brand-600 mt-1"></i>
+            <div>
+              <p class="text-sm font-bold text-slate-800">No entiendo temas difíciles</p>
+              <p class="text-xs text-slate-500">El profesor va muy rápido o el libro es confuso.</p>
+            </div>
+          </button>
+
+          <button type="button" onclick="selectDiagnostic('tiempo')" class="diag-btn p-4 rounded-xl border border-slate-200 text-left hover:border-brand-500 hover:bg-brand-50/50 transition flex items-start gap-3">
+            <i class="fa-solid fa-clock text-tealbrand-600 mt-1"></i>
+            <div>
+              <p class="text-sm font-bold text-slate-800">Trabajo o cuido a mi familia</p>
+              <p class="text-xs text-slate-500">Tengo poco tiempo y debo estudiar de noche.</p>
+            </div>
+          </button>
+
+          <button type="button" onclick="selectDiagnostic('matematicas')" class="diag-btn p-4 rounded-xl border border-slate-200 text-left hover:border-brand-500 hover:bg-brand-50/50 transition flex items-start gap-3">
+            <i class="fa-solid fa-calculator text-rose-600 mt-1"></i>
+            <div>
+              <p class="text-sm font-bold text-slate-800">Tengo rezago en matemáticas</p>
+              <p class="text-xs text-slate-500">Me cuesta el álgebra, fracciones o procedimientos.</p>
+            </div>
+          </button>
+
+          <button type="button" onclick="selectDiagnostic('retomar')" class="diag-btn p-4 rounded-xl border border-slate-200 text-left hover:border-brand-500 hover:bg-brand-50/50 transition flex items-start gap-3">
+            <i class="fa-solid fa-arrow-rotate-right text-indigo-600 mt-1"></i>
+            <div>
+              <p class="text-sm font-bold text-slate-800">Quiero retomar mis estudios</p>
+              <p class="text-xs text-slate-500">Dejé la escuela y necesito prepararme para un examen.</p>
+            </div>
+          </button>
+        </div>
+
+        <!-- Resultado dinámico -->
+        <div id="diagnostic-result" class="p-6 rounded-2xl bg-gradient-to-br from-brand-50 to-tealbrand-50 border border-brand-200">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="w-9 h-9 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold text-base">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </span>
+            <h4 id="diag-title" class="text-lg font-bold text-slate-900 font-heading">
+              Plan recomendado por Per - severa: Explicaciones Didácticas
+            </h4>
+          </div>
+          <p id="diag-desc" class="text-sm text-slate-700 leading-relaxed mb-4">
+            Usa el prompt de <em>"Feynman"</em> en ChatGPT o Gemini: pídele que te explique el concepto como si tuvieras 12 años y que te ponga un ejemplo con situaciones cotidianas.
+          </p>
+          <div id="diag-tools" class="flex flex-wrap gap-2 text-xs">
+            <span class="px-3 py-1 rounded-full bg-white font-bold text-brand-700 border border-brand-200 shadow-sm">
+              <i class="fa-solid fa-check mr-1 text-tealbrand-500"></i> Google Gemini / NotebookLM
+            </span>
+            <span class="px-3 py-1 rounded-full bg-white font-bold text-brand-700 border border-brand-200 shadow-sm">
+              <i class="fa-solid fa-check mr-1 text-tealbrand-500"></i> Khan Academy en Español
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== PIE DE PÁGINA (FOOTER) ==================== -->
+  <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+        
+        <!-- Columna 1: Marca -->
+        <div class="space-y-3 md:col-span-1">
+          <div class="text-2xl font-black text-white font-heading">
+            Per <span class="text-brand-500">-</span> <span class="text-tealbrand-400">severa</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Iniciativa estudiantil y social dedicada a combatir el rezago educativo mediante investigación de campo y la aplicación ética de la Inteligencia Artificial.
+          </p>
+          <div class="pt-2 text-xs text-slate-500">
+            <i class="fa-solid fa-location-dot text-rose-500 mr-1"></i> Puebla, México &middot; 2026
+          </div>
+        </div>
+
+        <!-- Columna 2: Navegación -->
+        <div class="space-y-2 text-xs">
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-3">Secciones</h4>
+          <p><a href="#inicio" class="hover:text-white transition">Inicio del Proyecto</a></p>
+          <p><a href="#proyecto" class="hover:text-white transition">Acerca de Per-severa</a></p>
+          <p><a href="#rezago" class="hover:text-white transition">Causas del Rezago</a></p>
+          <p><a href="#estadisticas" class="hover:text-white transition">Estadísticas de la Encuesta</a></p>
+        </div>
+
+        <!-- Columna 3: Recursos -->
+        <div class="space-y-2 text-xs">
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-3">Recursos</h4>
+          <p><a href="#ia-educacion" class="hover:text-white transition">Herramientas de IA para Estudiantes</a></p>
+          <p><a href="#uso-responsable" class="hover:text-white transition">Decálogo de Uso Ético</a></p>
+          <p><a href="#autodiagnostico" class="hover:text-white transition">Autodiagnóstico Educativo</a></p>
+        </div>
+
+        <!-- Columna 4: Agradecimientos y Créditos -->
+        <div class="space-y-3 text-xs">
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-3">Agradecimientos</h4>
+          <p class="text-slate-400 leading-relaxed">
+            Agradecemos a los <strong>88 participantes</strong> que compartieron su tiempo y vivencias en nuestra encuesta de rezago educativo.
+          </p>
+          <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-[11px] text-slate-400">
+            <i class="fa-solid fa-shield-halved text-tealbrand-400 mr-1"></i> Imágenes reales de sitios fotográficos documentales verificados (Unsplash).
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-slate-800 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p>&copy; 2026 <strong>Per - severa</strong>. Proyecto con fines educativos y de investigación comunitaria.</p>
+        <a href="#inicio" class="text-brand-400 hover:text-brand-300 font-semibold flex items-center gap-1">
+          <i class="fa-solid fa-arrow-up"></i> Volver arriba
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== SCRIPTS: GRÁFICAS Y DIAGNÓSTICO ==================== -->
+  <script>
+    // 1. Menú Móvil Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Cerrar menú al hacer click en un link móvil
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // 2. Control de Pestañas de Gráficas
+    function switchChartTab(tabKey) {
+      document.querySelectorAll('.chart-panel').forEach(p => p.classList.add('hidden'));
+      document.querySelectorAll('.chart-tab-btn').forEach(b => {
+        b.classList.remove('bg-brand-600', 'text-white', 'shadow-sm', 'active');
+        b.classList.add('bg-slate-100', 'text-slate-700');
+      });
+
+      const selectedPanel = document.getElementById('panel-' + tabKey);
+      const selectedTab = document.getElementById('tab-' + tabKey);
+      if (selectedPanel && selectedTab) {
+        selectedPanel.classList.remove('hidden');
+        selectedTab.classList.remove('bg-slate-100', 'text-slate-700');
+        selectedTab.classList.add('bg-brand-600', 'text-white', 'shadow-sm', 'active');
+      }
+    }
+
+    // 3. Inicialización de Gráficos con Chart.js (Datos exactos de la encuesta de 88 respuestas)
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      // Gráfica 1: Frecuencia de uso de IA (Doughnut)
+      const ctxFrec = document.getElementById('chartFrecuencia').getContext('2d');
+      new Chart(ctxFrec, {
+        type: 'doughnut',
+        data: {
+          labels: ['Varias veces por semana (44.3%)', 'Una vez por semana (22.7%)', 'Menos de 1 vez x semana (12.5%)', 'Todos los días (10.2%)', 'Nunca (10.2%)'],
+          datasets: [{
+            data: [39, 20, 11, 9, 9],
+            backgroundColor: ['#2f7bff', '#10b981', '#f59e0b', '#8b5cf6', '#cbd5e1'],
+            borderWidth: 2,
+            borderColor: '#ffffff'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { boxWidth: 12, font: { size: 11, family: 'Plus Jakarta Sans' } }
+            }
+          }
+        }
+      });
+
+      // Gráfica 2: Usos de IA (Horizontal Bar)
+      const ctxUsos = document.getElementById('chartUsos').getContext('2d');
+      new Chart(ctxUsos, {
+        type: 'bar',
+        indexAxis: 'y',
+        data: {
+          labels: [
+            'Resolver dudas escolares',
+            'Buscar información',
+            'Explicar temas difíciles',
+            'Hacer tareas / trabajos',
+            'Traducir textos',
+            'Uso personal / ocio',
+            'Actividades laborales',
+            'Lectura y matemáticas'
+          ],
+          datasets: [{
+            label: 'Alumnos / Usuarios (de 88)',
+            data: [60, 55, 35, 30, 25, 18, 12, 8],
+            backgroundColor: '#10b981',
+            borderRadius: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            x: {
+              beginAtZero: true,
+              max: 70,
+              grid: { color: '#f1f5f9' }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { font: { size: 11, family: 'Plus Jakarta Sans' } }
+            }
+          }
+        }
+      });
+
+      // Gráfica 3: Aspectos de Ayuda (Bar)
+      const ctxAyuda = document.getElementById('chartAyuda').getContext('2d');
+      new Chart(ctxAyuda, {
+        type: 'bar',
+        data: {
+          labels: [
+            'Explicaciones sencillas',
+            'Aprender a mi ritmo',
+            'Dudas fuera de clase',
+            'Organizar estudio',
+            'Acceso a materiales',
+            'Práctica matemáticas'
+          ],
+          datasets: [{
+            label: 'Menciones',
+            data: [56, 53, 52, 25, 25, 22],
+            backgroundColor: '#2f7bff',
+            borderRadius: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: { color: '#f1f5f9' }
+            },
+            x: {
+              grid: { display: false },
+              ticks: { font: { size: 10, family: 'Plus Jakarta Sans' } }
+            }
+          }
+        }
+      });
+
+      // Gráfica 4: Riesgos y Preocupaciones (Horizontal Bar)
+      const ctxRiesgos = document.getElementById('chartRiesgos').getContext('2d');
+      new Chart(ctxRiesgos, {
+        type: 'bar',
+        indexAxis: 'y',
+        data: {
+          labels: [
+            'Información falsa / inventada',
+            'Depender demasiado de tecnología',
+            'Afectación a privacidad de datos',
+            'Copiar sin aprender realmente',
+            'No saber cómo utilizarla',
+            'Falta de internet o dispositivo'
+          ],
+          datasets: [{
+            label: 'Porcentaje de preocupación (%)',
+            data: [65.9, 59.1, 50.0, 44.3, 22.7, 8.0],
+            backgroundColor: '#f43f5e',
+            borderRadius: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            x: {
+              beginAtZero: true,
+              max: 100,
+              ticks: { callback: v => v + '%' }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { font: { size: 10.5, family: 'Plus Jakarta Sans' } }
+            }
+          }
+        }
+      });
+
+      // Gráfica 5: Apoyos Necesarios (Pie)
+      const ctxApoyos = document.getElementById('chartApoyos').getContext('2d');
+      new Chart(ctxApoyos, {
+        type: 'pie',
+        data: {
+          labels: [
+            'Acceso a internet (27.3%)',
+            'Capacitación para usarla (26.1%)',
+            'Celular o computadora (14.8%)',
+            'No requeriría apoyo (12.5%)',
+            'Orientación docente (11.4%)',
+            'Herramientas gratis (8.0%)'
+          ],
+          datasets: [{
+            data: [24, 23, 13, 11, 10, 7],
+            backgroundColor: ['#10b981', '#2f7bff', '#8b5cf6', '#cbd5e1', '#f59e0b', '#ec4899'],
+            borderWidth: 2,
+            borderColor: '#ffffff'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { boxWidth: 12, font: { size: 10.5, family: 'Plus Jakarta Sans' } }
+            }
+          }
+        }
+      });
+    });
+
+    // 4. Herramienta de Autodiagnóstico Educativo
+    const diagData = {
+      dificiles: {
+        title: "Estrategia Per-severa: Técnica Feynman con IA",
+        desc: "Cuando una explicación formal no entra, pídele a la IA: 'Actúa como un profesor muy paciente. Explícame este concepto con una analogía simple de la vida diaria y compárame un ejemplo real.'",
+        tools: ["Google Gemini (Prompts guiados)", "NotebookLM con tus propios apuntes", "Khan Academy"]
+      },
+      tiempo: {
+        title: "Estrategia Per-severa: Micro-aprendizaje Nocturno / Móvil",
+        desc: "Aprovecha que el 95.5% estudia desde el celular. En lugar de estudiar 3 horas seguidas, pide a la IA que te genere cápsulas de 15 minutos con cuestionarios rápidos de 5 preguntas antes de dormir.",
+        tools: ["ChatGPT en App Móvil", "Audio Resúmenes con NotebookLM", "Duolingo / Quizzes"]
+      },
+      matematicas: {
+        title: "Estrategia Per-severa: Desglose Aritmético y Visual",
+        desc: "No te saltes el procedimiento. Escanea el ejercicio y solicita que no te dé solo el resultado final, sino la justificación de cada paso algebraico para detectar exactamente en qué línea surge tu duda.",
+        tools: ["Photomath con explicación paso a paso", "Khan Academy Matemáticas", "WolframAlpha"]
+      },
+      retomar: {
+        title: "Estrategia Per-severa: Ruta de Nivelación Escalonada",
+        desc: "¡Felicidades por tu perseverancia! Pídele a la IA: 'Quiero acreditar mi secundaria o bachillerato. Diseña un plan de estudio de 8 semanas empezando por los temas fundamentales de español y matemáticas.'",
+        tools: ["Plataformas INEA / Prepa Abierta", "Guías de Estudio con Perplexity AI", "ChatGPT para exámenes simulacro"]
+      }
+    };
+
+    function selectDiagnostic(key) {
+      const data = diagData[key];
+      if (!data) return;
+
+      const titleEl = document.getElementById('diag-title');
+      const descEl = document.getElementById('diag-desc');
+      const toolsEl = document.getElementById('diag-tools');
+
+      titleEl.innerText = data.title;
+      descEl.innerText = data.desc;
+      toolsEl.innerHTML = data.tools.map(t => `
+        <span class="px-3 py-1 rounded-full bg-white font-bold text-brand-700 border border-brand-200 shadow-sm">
+          <i class="fa-solid fa-check mr-1 text-tealbrand-500"></i> ${t}
+        </span>
+      `).join('');
+
+      document.querySelectorAll('.diag-btn').forEach(b => b.classList.remove('border-brand-500', 'bg-brand-50'));
+      event.currentTarget.classList.add('border-brand-500', 'bg-brand-50');
+    }
+  </script>
+</body>
+</html>
